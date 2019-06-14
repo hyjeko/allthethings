@@ -1,0 +1,33 @@
+{
+  "name": "allthethings",
+  "version": "1.0.0",
+  "description": "Prioritize all the things",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel -p 3000 src/index.html",
+    "build": "parcel build src/index.html",
+    "prod_start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyjeko/allthethings.git"
+  },
+  "keywords": [
+    "react",
+    "parcel",
+    "grommet",
+    "heroku",
+    "express"
+  ],
+  "author": "Omar Hyjek",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hyjeko/allthethings/issues"
+  },
+  "homepage": "https://github.com/hyjeko/allthethings#readme",
+  "dependencies": {
+    "parcel-bundler": "^1.12.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
