@@ -1,6 +1,6 @@
 {
   "name": "allthethings",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Prioritize all the things",
   "main": "index.js",
   "scripts": {
@@ -37,6 +37,7 @@
     "parcel-bundler": "^1.12.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "styled-components": "^4.3.1"
+    "styled-components": "^4.3.1",
+    "version": "^0.1.2"
   }
 }
