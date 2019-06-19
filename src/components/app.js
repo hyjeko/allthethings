@@ -1,6 +1,6 @@
 //v({process.env.npm_package_version}
 import React from "react";
-import { Grommet } from "grommet";
+import { Grommet, Box, Heading } from "grommet";
 
 //theme
 const theme = {
@@ -13,10 +13,23 @@ const theme = {
   }
 };
 
+const boxProps = {
+  pad: "small",
+  a11yTitle: "Main Container",
+  align: "center",
+  alignContent: "start"
+};
+
+const h1Props = {
+  level: 1
+};
+
 export function App() {
   return (
     <Grommet theme={theme}>
-      <h1>All The Things!</h1>
+      <Box {...boxProps}>
+        <Heading {...h1Props}> All The Things</Heading>
+      </Box>
     </Grommet>
   );
 }
