@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel -p 3000 src/index.html",
-    "build": "parcel build src/index.html",
-    "prod_build": "npm version minor && parcel build src/index.html",
+    "build": "npm version minor && parcel build src/index.html",
     "prod_start": "node server.js"
   },
   "repository": {
