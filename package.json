@@ -1,6 +1,6 @@
 {
   "name": "allthethings",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Prioritize all the things",
   "main": "index.js",
   "scripts": {
