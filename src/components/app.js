@@ -45,8 +45,10 @@ const listBoxProps = {
 };
 
 export function App() {
-  const [inputValue, setInputValue] = useState("");
+  const [isCompareMode, setCompareMode] = useState(false);
   const [thingsArray, setThingsArray] = useState([]);
+  const [inputValue, setInputValue] = useState("");
+  const lessThan3Things = thingsArray.length < 3;
 
   const onChange = event => {
     setInputValue(event.target.value);
@@ -58,6 +60,10 @@ export function App() {
     }
   };
 
+  const onModeChangeClick = _event => {
+    setCompareMode(!isCompareMode);
+  };
+
   const addThing = () => {
     if (inputValue.trim() !== "") {
       setThingsArray([...thingsArray, inputValue]);
@@ -65,14 +71,11 @@ export function App() {
     }
   };
 
-  const lessThan3Things = thingsArray.length < 3;
-
-  return (
-    <Grommet theme={theme}>
-      <Box {...boxProps}>
-        <Heading level={1}> All The Things</Heading>
+  const renderInputMode = () => {
+    return (
+      <>
         <Paragraph textAlign="center">
-          Let's prioritize! Start by adding a handful of things below.
+          {"Let's prioritize! Start by adding a handful of things below."}
         </Paragraph>
         <Box {...textInputBoxProps}>
           <TextInput
@@ -97,12 +100,32 @@ export function App() {
               primary
               label="Compare"
               margin="small"
-              onClick={() => {
-                console.log("Compare Button Clicked");
-              }}
+              onClick={onModeChangeClick}
             />
           )}
         </Box>
+      </>
+    );
+  };
+
+  const renderCompareMode = () => {
+    return (
+      <>
+        <Heading level="3">{"Compare Mode!"}</Heading>
+        <Button
+          primary
+          label="Go back to Input Mode"
+          onClick={onModeChangeClick}
+        />
+      </>
+    );
+  };
+
+  return (
+    <Grommet theme={theme}>
+      <Box {...boxProps}>
+        <Heading level={1}>{"All The Things"}</Heading>
+        {isCompareMode ? renderCompareMode() : renderInputMode()}
       </Box>
     </Grommet>
   );
