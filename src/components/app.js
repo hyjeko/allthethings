@@ -62,9 +62,10 @@ export function App() {
   };
 
   const addThing = () => {
-    if (inputValue.trim() !== "") {
-      if (!thingsArray.includes(inputValue)) {
-        setThingsArray([...thingsArray, inputValue]);
+    const trimmedInput = inputValue.trim();
+    if (trimmedInput !== "") {
+      if (!thingsArray.includes(trimmedInput)) {
+        setThingsArray([...thingsArray, trimmedInput]);
         setInputValue("");
       }
     }
