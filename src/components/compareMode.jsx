@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Heading, Button, Paragraph, Box } from "grommet";
+
+import { ThingButton } from "./thingButton";
 
 const compareHeadingBoxProps = {
   margin: {
@@ -22,17 +24,17 @@ const compareBoxProps = {
   direction: "row"
 };
 
-const thingBoxProps = {
-  margin: "medium",
-  align: "center",
-  justify: "center",
-  width: "medium",
-  fill: "vertical",
-  alignContent: "center"
-};
-
 export function CompareMode(props) {
-  const { onModeChangeClick } = props;
+  const [selectedThing, setSelectedThing] = useState(null);
+  const { onModeChangeClick, thingsArray } = props;
+
+  const onSelect = event => {
+    setSelectedThing(event.target.id);
+  };
+
+  const isSelected = id => {
+    return id === selectedThing;
+  };
 
   return (
     <>
@@ -41,12 +43,16 @@ export function CompareMode(props) {
         <Heading level="3">{"Which thing is more important?"}</Heading>
       </Box>
       <Box {...compareBoxProps}>
-        <Box {...thingBoxProps}>
-          <Button fill label="Example Text" />
-        </Box>
-        <Box {...thingBoxProps}>
-          <Button fill label="Example Text" />
-        </Box>
+        <ThingButton
+          isSelected={isSelected}
+          onSelect={onSelect}
+          thing={thingsArray[0]}
+        />
+        <ThingButton
+          isSelected={isSelected}
+          onSelect={onSelect}
+          thing={thingsArray[1]}
+        />
       </Box>
       <Box pad="small" direction="row" gap="medium">
         <Button label="Oops" onClick={onModeChangeClick} />

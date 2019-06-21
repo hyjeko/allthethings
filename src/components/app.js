@@ -59,7 +59,10 @@ export function App() {
       <Box {...boxProps}>
         <Heading level={1}>{"All The Things"}</Heading>
         {isCompareMode ? (
-          <CompareMode onModeChangeClick={onModeChangeClick} />
+          <CompareMode
+            thingsArray={thingsArray}
+            onModeChangeClick={onModeChangeClick}
+          />
         ) : (
           <InputMode
             inputValue={inputValue}
