@@ -1,14 +1,9 @@
-//v({process.env.npm_package_version}
+//Libraries
 import React, { useState } from "react";
-import {
-  Grommet,
-  Box,
-  Heading,
-  Paragraph,
-  TextInput,
-  Button,
-  Text
-} from "grommet";
+import { Grommet, Box, Heading, Paragraph, TextInput, Button } from "grommet";
+
+//Custom Components
+import { Thing } from "./thing";
 
 //theme
 const theme = {
@@ -21,6 +16,7 @@ const theme = {
   }
 };
 
+//Box Container Props
 const boxProps = {
   pad: "small",
   a11yTitle: "Main Container",
@@ -44,6 +40,7 @@ const listBoxProps = {
   }
 };
 
+//Root App Component
 export function App() {
   const [isCompareMode, setCompareMode] = useState(false);
   const [thingsArray, setThingsArray] = useState([]);
@@ -66,8 +63,10 @@ export function App() {
 
   const addThing = () => {
     if (inputValue.trim() !== "") {
-      setThingsArray([...thingsArray, inputValue]);
-      setInputValue("");
+      if (!thingsArray.includes(inputValue)) {
+        setThingsArray([...thingsArray, inputValue]);
+        setInputValue("");
+      }
     }
   };
 
@@ -128,18 +127,5 @@ export function App() {
         {isCompareMode ? renderCompareMode() : renderInputMode()}
       </Box>
     </Grommet>
-  );
-}
-
-function Thing(props) {
-  return (
-    <Box
-      border={{ color: "dark-1", size: "small" }}
-      margin="xsmall"
-      pad="small"
-      width="medium"
-    >
-      <Text>{props.text}</Text>
-    </Box>
   );
 }
