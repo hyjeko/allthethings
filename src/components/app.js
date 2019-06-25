@@ -5,6 +5,7 @@ import { Grommet, Box, Heading, Paragraph, TextInput, Button } from "grommet";
 //Custom Components
 import { InputMode } from "./inputMode";
 import { CompareMode } from "./compareMode";
+import { Thing } from "./thing";
 
 //theme
 const theme = {
@@ -54,6 +55,15 @@ export function App() {
     }
   };
 
+  const deleteThing = (_event, index) => {
+    const thing = thingsArray[index];
+    if (thing) {
+      const newThingsArray = [...thingsArray];
+      delete newThingsArray[index];
+      setThingsArray(newThingsArray);
+    }
+  };
+
   return (
     <Grommet theme={theme}>
       <Box {...boxProps}>
@@ -68,11 +78,14 @@ export function App() {
             inputValue={inputValue}
             thingsArray={thingsArray}
             addThing={addThing}
+            deleteThing={deleteThing}
             onChange={onChange}
             onKeyDown={onKeyDown}
             onModeChangeClick={onModeChangeClick}
-          />
-        )}
+        /> 
+        ) 
+
+        }
       </Box>
     </Grommet>
   );
