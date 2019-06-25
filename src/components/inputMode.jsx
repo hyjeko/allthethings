@@ -27,9 +27,10 @@ export function InputMode(props) {
     inputValue,
     thingsArray,
     addThing,
+    deleteThing,
     onChange,
     onKeyDown,
-    onModeChangeClick
+    onModeChangeClick,
   } = props;
 
   const lessThan3Things = thingsArray.length < 3;
@@ -55,7 +56,7 @@ export function InputMode(props) {
             `Add ${3 - thingsArray.length} more things to compare`}
         </Paragraph>
         {thingsArray.map((thing, index) => {
-          return <Thing key={index} text={thing} />;
+          return <Thing deleteThing={deleteThing} thingIndex={index} key={thing + index} text={thing} />;
         })}
         {!lessThan3Things && (
           <Button

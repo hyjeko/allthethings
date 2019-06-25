@@ -1,6 +1,6 @@
 //Libraries
 import React, { useState } from "react";
-import { Grommet, Box, Heading, Paragraph, TextInput, Button } from "grommet";
+import { Grommet, Box, Heading } from "grommet";
 
 //Custom Components
 import { InputMode } from "./inputMode";
@@ -54,6 +54,16 @@ export function App() {
     }
   };
 
+  const deleteThing = (_event, index) => {
+    const thing = thingsArray[index];
+    if (thing) {
+      const newThingsArray = [...thingsArray];
+      delete newThingsArray[index];
+      const updatedThingsArray = newThingsArray.filter(things => things)
+      setThingsArray(updatedThingsArray)
+    }
+  };
+
   return (
     <Grommet theme={theme}>
       <Box {...boxProps}>
@@ -68,11 +78,14 @@ export function App() {
             inputValue={inputValue}
             thingsArray={thingsArray}
             addThing={addThing}
+            deleteThing={deleteThing}
             onChange={onChange}
             onKeyDown={onKeyDown}
             onModeChangeClick={onModeChangeClick}
-          />
-        )}
+        /> 
+        ) 
+
+        }
       </Box>
     </Grommet>
   );
