@@ -59,7 +59,8 @@ export function App() {
     if (thing) {
       const newThingsArray = [...thingsArray];
       delete newThingsArray[index];
-      setThingsArray(newThingsArray.filter(function(value) {return value!== undefined}));
+      const updatedThingsArray = newThingsArray.filter(things => things)
+      setThingsArray(updatedThingsArray)
     }
   };
 
