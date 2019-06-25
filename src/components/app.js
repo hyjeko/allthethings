@@ -1,11 +1,10 @@
 //Libraries
 import React, { useState } from "react";
-import { Grommet, Box, Heading, Paragraph, TextInput, Button } from "grommet";
+import { Grommet, Box, Heading } from "grommet";
 
 //Custom Components
 import { InputMode } from "./inputMode";
 import { CompareMode } from "./compareMode";
-import { Thing } from "./thing";
 
 //theme
 const theme = {
@@ -60,7 +59,7 @@ export function App() {
     if (thing) {
       const newThingsArray = [...thingsArray];
       delete newThingsArray[index];
-      setThingsArray(newThingsArray);
+      setThingsArray(newThingsArray.filter(function(value) {return value!== undefined}));
     }
   };
 
