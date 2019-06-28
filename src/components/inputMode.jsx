@@ -56,7 +56,7 @@ export function InputMode(props) {
             `Add ${3 - thingsArray.length} more things to compare`}
         </Paragraph>
         {thingsArray.map((thing, index) => {
-          return <Thing deleteThing={deleteThing} thingIndex={index} key={thing + index} text={thing} />;
+          return <Thing deleteThing={deleteThing} thingIndex={index} thingPriority={index+1} key={thing + index} text={thing} />;
         })}
         {!lessThan3Things && (
           <Button
