@@ -1,13 +1,15 @@
 //library
 import React from "react";
-import { Paragraph, TextInput, Box, Button, FormField } from "grommet";
+import { Paragraph, TextInput, Box, Button } from "grommet";
 
 //custom components
 import { Thing } from "./thing";
+import { isDuplicate } from "./app"
 
 const textInputBoxProps = {
   align: "center",
   width: "medium",
+  direction: "row",
 };
 
 const listBoxProps = {
@@ -21,6 +23,12 @@ const listBoxProps = {
   }
 };
 
+const errorTextProps = {
+  color: "status-error",
+  size: "small",
+  margin: {bottom:"none"}
+}
+
 export function InputMode(props) {
   const {
     inputValue,
@@ -30,10 +38,10 @@ export function InputMode(props) {
     onChange,
     onKeyDown,
     onModeChangeClick,
+    isDuplicate
   } = props;
 
   const lessThan3Things = thingsArray.length < 3;
-  const isDuplicate = true;
 
   return (
     <>
@@ -41,7 +49,6 @@ export function InputMode(props) {
         {"Let's prioritize! Start by adding a handful of things below."}
       </Paragraph>
       <Box {...textInputBoxProps}>
-        <Box {...textInputBoxProps} direction="row">
           <TextInput
             placeholder="Add a thing..."
             size="medium"
@@ -50,11 +57,9 @@ export function InputMode(props) {
             onKeyDown={onKeyDown}
           />
           <Button label="+Add" onClick={addThing} margin="small" />
-        </Box>
-        <Paragraph color="status-error">
-        {isDuplicate && `Oops! You can't add the same thing twice.`}
-        </Paragraph>
       </Box>
+      {isDuplicate && 
+          <Paragraph {...errorTextProps}>Oops! You can't add the same thing twice.</Paragraph>}
       <Box {...listBoxProps}>
         <Paragraph color="dark-5">
           {lessThan3Things &&
