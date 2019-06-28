@@ -51,6 +51,8 @@ export function App() {
         setThingsArray([...thingsArray, trimmedInput]);
         setInputValue("");
       }
+      if (thingsArray.includes(trimmedInput)) {
+      }
     }
   };
 
