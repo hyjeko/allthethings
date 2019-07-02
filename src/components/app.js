@@ -26,9 +26,11 @@ const boxProps = {
 
 //Root App Component
 export function App() {
+
   const [isCompareMode, setCompareMode] = useState(false);
   const [thingsArray, setThingsArray] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const [isDuplicate, setDuplicateError] = useState(false);
 
   const onChange = event => {
     setInputValue(event.target.value);
@@ -50,6 +52,10 @@ export function App() {
       if (!thingsArray.includes(trimmedInput)) {
         setThingsArray([...thingsArray, trimmedInput]);
         setInputValue("");
+        setDuplicateError(false)
+      }
+      if (thingsArray.includes(trimmedInput)) {
+        setDuplicateError(true)
       }
     }
   };
@@ -59,7 +65,7 @@ export function App() {
     if (thing) {
       const newThingsArray = [...thingsArray];
       delete newThingsArray[index];
-      const updatedThingsArray = newThingsArray.filter(things => things)
+      const updatedThingsArray = newThingsArray.filter(things => things);
       setThingsArray(updatedThingsArray)
     }
   };
@@ -82,6 +88,7 @@ export function App() {
             onChange={onChange}
             onKeyDown={onKeyDown}
             onModeChangeClick={onModeChangeClick}
+            isDuplicate={isDuplicate}
         /> 
         ) 
 
