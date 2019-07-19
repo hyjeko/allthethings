@@ -77,8 +77,22 @@ export function CompareMode(props) {
       //Left side selected
       if (thingsSubset.indexOf(selectedThing) > -1 && thingsSubset.length > 1) {
         //Left side is already in subset, so increment the left side first
-        setLeftNewCompareIndex(leftCompareIndex + 1);
-        setSelectedThing(null);
+        //First see if the increment would put us out of bounds
+        if (thingsSubset[leftCompareIndex + 1]) {
+          setLeftNewCompareIndex(leftCompareIndex + 1);
+          setSelectedThing(null);
+        } else {
+          //Next index is out of bounds so add to the end and reset the left index and increment the right index
+          const newSubset = thingsSubset;
+          //Insert
+          newSubset.push(thingsArray[rightCompareIndex]);
+          setThingsSubset(newSubset);
+          //Update right-side index
+          setRightNewCompareIndex(rightCompareIndex + 1);
+          setLeftNewCompareIndex(0);
+          //Reset Selected
+          setSelectedThing(null);
+        }
       } else {
         //Not in subset yet, so insert and increment
         const newSubset = thingsSubset;
@@ -92,6 +106,8 @@ export function CompareMode(props) {
       }
     }
   };
+
+  console.log(thingsSubset);
 
   return (
     <>
