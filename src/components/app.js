@@ -26,7 +26,6 @@ const boxProps = {
 
 //Root App Component
 export function App() {
-
   const [isCompareMode, setCompareMode] = useState(false);
   const [thingsArray, setThingsArray] = useState([]);
   const [inputValue, setInputValue] = useState("");
@@ -52,10 +51,10 @@ export function App() {
       if (!thingsArray.includes(trimmedInput)) {
         setThingsArray([...thingsArray, trimmedInput]);
         setInputValue("");
-        setDuplicateError(false)
+        setDuplicateError(false);
       }
       if (thingsArray.includes(trimmedInput)) {
-        setDuplicateError(true)
+        setDuplicateError(true);
       }
     }
   };
@@ -66,7 +65,7 @@ export function App() {
       const newThingsArray = [...thingsArray];
       delete newThingsArray[index];
       const updatedThingsArray = newThingsArray.filter(things => things);
-      setThingsArray(updatedThingsArray)
+      setThingsArray(updatedThingsArray);
     }
   };
 
@@ -76,8 +75,10 @@ export function App() {
         <Heading level={1}>{"All The Things"}</Heading>
         {isCompareMode ? (
           <CompareMode
-            thingsArray={thingsArray}
             onModeChangeClick={onModeChangeClick}
+            thingsArray={thingsArray}
+            setThingsArray={setThingsArray}
+            setCompareMode={setCompareMode}
           />
         ) : (
           <InputMode
@@ -89,10 +90,8 @@ export function App() {
             onKeyDown={onKeyDown}
             onModeChangeClick={onModeChangeClick}
             isDuplicate={isDuplicate}
-        /> 
-        ) 
-
-        }
+          />
+        )}
       </Box>
     </Grommet>
   );
