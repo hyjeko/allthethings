@@ -71,6 +71,8 @@ export function CompareMode(props) {
       setThingsSubset(newSubset);
       //Update right-side index
       setRightNewCompareIndex(rightCompareIndex + 1);
+      //Reset left-side index
+      setLeftNewCompareIndex(0);
       //Reset Selected
       setSelectedThing(null);
     } else {
@@ -106,8 +108,6 @@ export function CompareMode(props) {
       }
     }
   };
-
-  console.log(thingsSubset);
 
   return (
     <>
