@@ -1,12 +1,12 @@
 //Libraries
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Grommet, Box, Heading } from "grommet";
 
 //Custom Components
 import { InputMode } from "./inputMode";
 import { CompareMode } from "./compareMode";
 
-//theme
+//Theme
 const theme = {
   global: {
     font: {
@@ -26,10 +26,17 @@ const boxProps = {
 
 //Root App Component
 export function App() {
+  const thingsFromStorage = localStorage.getItem("thingsArray");
+  const initialThings = thingsFromStorage ? thingsFromStorage.split(",") : [];
+
   const [isCompareMode, setCompareMode] = useState(false);
-  const [thingsArray, setThingsArray] = useState([]);
+  const [thingsArray, setThingsArray] = useState(initialThings);
   const [inputValue, setInputValue] = useState("");
   const [isDuplicate, setDuplicateError] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("thingsArray", thingsArray);
+  }, [thingsArray]);
 
   const onChange = event => {
     setInputValue(event.target.value);

@@ -2,4 +2,3 @@ node_modules
 .cache
 dist
 .vscode/launch.json
-src/components/all-the-things.code-workspace
