@@ -66,6 +66,15 @@ export function App() {
     }
   };
 
+  const swapThing = (sourceIndex, destinationIndex) => {
+    const sourceThing = thingsArray[sourceIndex];
+    const destinationThing = thingsArray[destinationIndex];
+    const newThingsArray = [...thingsArray];
+    newThingsArray[sourceIndex] = destinationThing;
+    newThingsArray[destinationIndex] = sourceThing;
+    setThingsArray(newThingsArray);
+  }
+
   const deleteThing = (_event, index) => {
     const thing = thingsArray[index];
     if (thing) {
@@ -93,6 +102,7 @@ export function App() {
             thingsArray={thingsArray}
             addThing={addThing}
             deleteThing={deleteThing}
+            swapThing={swapThing}
             onChange={onChange}
             onKeyDown={onKeyDown}
             onModeChangeClick={onModeChangeClick}

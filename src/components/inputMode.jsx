@@ -4,7 +4,6 @@ import { Paragraph, TextInput, Box, Button } from "grommet";
 
 //custom components
 import { Thing } from "./thing";
-import { isDuplicate } from "./app";
 
 const textInputBoxProps = {
   align: "center",
@@ -35,6 +34,7 @@ export function InputMode(props) {
     thingsArray,
     addThing,
     deleteThing,
+    swapThing,
     onChange,
     onKeyDown,
     onModeChangeClick,
@@ -72,6 +72,7 @@ export function InputMode(props) {
           return (
             <Thing
               deleteThing={deleteThing}
+              swapThing={swapThing}
               thingIndex={index}
               thingPriority={index + 1}
               key={thing + index}
