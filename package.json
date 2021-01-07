@@ -1,11 +1,11 @@
 {
   "name": "allthethings",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Prioritize all the things",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
-    "start": "parcel -p 3000 src/index.html",
-    "build": "parcel build src/index.html",
+    "start": "snowpack dev",
+    "build": "snowpack build",
     "prod_start": "node server.js"
   },
   "repository": {
@@ -14,7 +14,7 @@
   },
   "keywords": [
     "react",
-    "parcel",
+    "snowpack",
     "grommet",
     "heroku",
     "express"
@@ -26,22 +26,19 @@
   },
   "homepage": "https://github.com/hyjeko/allthethings#readme",
   "engines": {
-    "node": "10.x"
+    "node": "12.13"
   },
   "dependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/plugin-proposal-class-properties": "^7.12.1",
-    "@babel/plugin-transform-runtime": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
-    "@babel/preset-react": "^7.12.10",
     "express": "^4.17.1",
     "grommet": "^2.16.2",
     "grommet-icons": "^4.5.0",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
-    "parcel": "^2.0.0-nightly.514"
+    "@snowpack/plugin-dotenv": "^2.0.5",
+    "@snowpack/plugin-react-refresh": "^2.3.9",
+    "snowpack": "^3.0.0-rc.2"
   }
 }
