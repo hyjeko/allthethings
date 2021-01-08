@@ -1,6 +1,8 @@
 //Libraries
 import React, { useState, useEffect } from 'react';
 
+import './app.css';
+
 //Custom Components
 import { InputMode } from './inputMode';
 import { CompareMode } from './compareMode';
