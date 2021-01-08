@@ -21,18 +21,21 @@ export function InputMode(props) {
 
   return (
     <>
-      <p>{"Let's prioritize! Start by adding a handful of things below."}</p>
-      <div>
-        <input
-          placeholder="Add a thing..."
-          value={inputValue}
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-        />
-        <button onClick={addThing}>+Add</button>
+      <p class="py-5">Let's prioritize! Start by adding a handful of things below.</p>
+      <div class="container py-5">
+        <div class="flex justify-center space-x-5">
+          <input
+            class="border p-3"
+            placeholder="Add a thing..."
+            value={inputValue}
+            onChange={onChange}
+            onKeyDown={onKeyDown}
+          />
+          <button class="border rounded-3xl px-7" onClick={addThing}>+Add</button>
+        </div>
       </div>
       {isDuplicate && <p>Oops! You can't add the same thing twice.</p>}
-      <div>
+      <div class="container py-5">
         <p>
           {lessThan3Things &&
             `Add ${3 - thingsArray.length} more things to compare`}

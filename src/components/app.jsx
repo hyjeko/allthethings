@@ -70,8 +70,8 @@ export function App() {
 
   return (
     <main>
-      <div>
-        <h1>{'All The Things'}</h1>
+      <div class="container mx-auto px-10 text-center">
+        <h1 class="text-5xl font-bold py-10">{'All The Things'}</h1>
         {isCompareMode ? (
           <CompareMode
             onModeChangeClick={onModeChangeClick}
