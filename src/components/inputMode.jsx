@@ -1,32 +1,8 @@
 //library
-import React from "react";
-import { Paragraph, TextInput, Box, Button } from "grommet";
+import React from 'react';
 
 //custom components
-import { Thing } from "./thing";
-
-const textInputBoxProps = {
-  align: "center",
-  width: "medium",
-  direction: "row"
-};
-
-const listBoxProps = {
-  margin: "medium",
-  align: "center",
-  width: "medium",
-  border: {
-    color: "brand",
-    size: "small",
-    side: "top"
-  }
-};
-
-const errorTextProps = {
-  color: "status-error",
-  size: "small",
-  margin: { bottom: "none" }
-};
+import { Thing } from './thing';
 
 export function InputMode(props) {
   const {
@@ -45,29 +21,22 @@ export function InputMode(props) {
 
   return (
     <>
-      <Paragraph textAlign="center">
-        {"Let's prioritize! Start by adding a handful of things below."}
-      </Paragraph>
-      <Box {...textInputBoxProps}>
-        <TextInput
+      <p>{"Let's prioritize! Start by adding a handful of things below."}</p>
+      <div>
+        <input
           placeholder="Add a thing..."
-          size="medium"
           value={inputValue}
           onChange={onChange}
           onKeyDown={onKeyDown}
         />
-        <Button label="+Add" onClick={addThing} margin="small" />
-      </Box>
-      {isDuplicate && (
-        <Paragraph {...errorTextProps}>
-          Oops! You can't add the same thing twice.
-        </Paragraph>
-      )}
-      <Box {...listBoxProps}>
-        <Paragraph color="dark-5">
+        <button onClick={addThing}>+Add</button>
+      </div>
+      {isDuplicate && <p>Oops! You can't add the same thing twice.</p>}
+      <div>
+        <p>
           {lessThan3Things &&
             `Add ${3 - thingsArray.length} more things to compare`}
-        </Paragraph>
+        </p>
         {thingsArray.map((thing, index) => {
           return (
             <Thing
@@ -81,14 +50,9 @@ export function InputMode(props) {
           );
         })}
         {!lessThan3Things && (
-          <Button
-            primary
-            label="Compare"
-            margin="small"
-            onClick={onModeChangeClick}
-          />
+          <button onClick={onModeChangeClick}>Compare</button>
         )}
-      </Box>
+      </div>
     </>
   );
 }
