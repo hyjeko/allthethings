@@ -67,7 +67,7 @@ export function App() {
   };
 
   return (
-    <div>
+    <main>
       <div>
         <h1>{'All The Things'}</h1>
         {isCompareMode ? (
@@ -91,6 +91,6 @@ export function App() {
           />
         )}
       </div>
-    </div>
+    </main>
   );
 }
