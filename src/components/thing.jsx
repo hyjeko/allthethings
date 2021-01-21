@@ -23,19 +23,19 @@ export function Thing(props) {
 
   return (
     <div
-      class="border border-black cursor-move mx-auto max-w-sm p-2"
+      class="flex justify-between items-center space-x-3 border border-black rounded-xl cursor-move mx-auto max-w-sm p-2"
       draggable
       onDragStart={onDragStart}
       onDragOver={onDragOver}
       onDrop={onDrop}
     >
-      <div>
+      <div class="p-2 rounded border-purple-600 bg-purple-600 text-white">
         <text>{thingPriority}</text>
       </div>
       <div>
         <text>{props.text}</text>
       </div>
-      <button onClick={onClick}>Remove</button>
+      <button class="p-2" onClick={onClick}>x</button>
     </div>
   );
 }
