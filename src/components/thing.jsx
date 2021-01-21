@@ -23,6 +23,7 @@ export function Thing(props) {
 
   return (
     <div
+      class="border border-black cursor-move mx-auto max-w-sm p-2"
       draggable
       onDragStart={onDragStart}
       onDragOver={onDragOver}

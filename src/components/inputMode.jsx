@@ -35,11 +35,11 @@ export function InputMode(props) {
         </div>
       </div>
       {isDuplicate && <p>Oops! You can't add the same thing twice.</p>}
-      <div class="container py-5">
-        <p>
+      <p>
           {lessThan3Things &&
             `Add ${3 - thingsArray.length} more things to compare`}
-        </p>
+      </p>
+      <div class="container py-5 space-y-2">
         {thingsArray.map((thing, index) => {
           return (
             <Thing
@@ -52,10 +52,10 @@ export function InputMode(props) {
             />
           );
         })}
-        {!lessThan3Things && (
-          <button onClick={onModeChangeClick}>Compare</button>
-        )}
       </div>
+      {!lessThan3Things && (
+        <button onClick={onModeChangeClick}>Compare</button>
+      )}
     </>
   );
 }

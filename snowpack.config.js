@@ -9,11 +9,8 @@ module.exports = {
     '@snowpack/plugin-dotenv',
     '@snowpack/plugin-postcss'
   ],
-  install: [
-    /* ... */
-  ],
-  installOptions: {
-    /* ... */
+  packageOptions: {
+    source: 'remote'
   },
   devOptions: {
     /* ... */
@@ -24,13 +21,10 @@ module.exports = {
   alias: {
     /* ... */
   },
-  experiments: {
-    source: 'skypack',
-    optimize: {
-      bundle: true,
-      minify: true,
-      target: 'es2018'
-    }
+  optimize: {
+    bundle: true,
+    minify: true,
+    target: 'es2020'
   },
   devOptions: {
     open: 'none'
