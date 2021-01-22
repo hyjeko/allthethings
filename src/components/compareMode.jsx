@@ -1,28 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Heading, Button, Paragraph, Box } from "grommet";
+import React, { useState, useEffect } from 'react';
 
-import { ThingButton } from "./thingButton";
-
-const compareHeadingBoxProps = {
-  margin: {
-    top: "medium"
-  },
-  align: "center",
-  width: "medium",
-  border: {
-    color: "brand",
-    size: "small",
-    side: "top"
-  }
-};
-
-const compareBoxProps = {
-  margin: "medium",
-  align: "center",
-  width: "large",
-  height: "small",
-  direction: "row"
-};
+import { ThingButton } from './thingButton';
 
 export function CompareMode(props) {
   //Props from App.js
@@ -51,18 +29,18 @@ export function CompareMode(props) {
   });
 
   //(UI) Update the currently selected thing
-  const onSelect = event => {
+  const onSelect = (event) => {
     setSelectedThing(event.target.id);
   };
 
   //(UI) Determine if selected
-  const isSelected = id => {
+  const isSelected = (id) => {
     return id === selectedThing;
   };
 
   //Event handler for clicking "Next"
   //Holds logic for what to display & save upon click
-  const nextClick = _event => {
+  const nextClick = (_event) => {
     if (thingsArray.indexOf(selectedThing) === rightCompareIndex) {
       //Right side selected
       const newSubset = thingsSubset;
@@ -111,11 +89,11 @@ export function CompareMode(props) {
 
   return (
     <>
-      <Paragraph textAlign="center">{"Let the prioritizing begin!"}</Paragraph>
-      <Box {...compareHeadingBoxProps}>
-        <Heading level="3">{"Which thing is more important?"}</Heading>
-      </Box>
-      <Box {...compareBoxProps}>
+      <p class="m-8">{'Let the prioritizing begin!'}</p>
+      <div class="m-8">
+        <h3>{'Which thing is more important?'}</h3>
+      </div>
+      <div class="flex justify-center items-center space-x-8">
         <ThingButton
           isSelected={isSelected}
           onSelect={onSelect}
@@ -126,16 +104,14 @@ export function CompareMode(props) {
           onSelect={onSelect}
           thing={thingsArray[rightCompareIndex]}
         />
-      </Box>
-      <Box pad="small" direction="row" gap="medium">
-        <Button label="Oops" onClick={onModeChangeClick} />
-        <Button
-          primary
-          label="Next"
-          disabled={!selectedThing}
-          onClick={nextClick}
-        />
-      </Box>
+      </div>
+      <div class="m-8 space-x-4">
+        <button class="border-2 rounded-3xl px-7 border-purple-400" onClick={onModeChangeClick}>Oops</button>
+        <button class={!selectedThing ? "border-2 rounded-3xl px-7 border-purple-500 bg-purple-500 text-white border-opacity-40 bg-opacity-40" : "border-2 rounded-3xl px-7 border-purple-500 bg-purple-500 text-white"} 
+        onClick={nextClick} disabled={!selectedThing}>
+          Next
+        </button>
+      </div>
     </>
   );
 }

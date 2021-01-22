@@ -1,4 +1,6 @@
 node_modules
-.parcel-cache
 dist
+build
 .vscode/launch.json
+.DS_store
+.snowpack

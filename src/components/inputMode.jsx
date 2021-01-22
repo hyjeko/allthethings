@@ -1,32 +1,8 @@
 //library
-import React from "react";
-import { Paragraph, TextInput, Box, Button } from "grommet";
+import React from 'react';
 
 //custom components
-import { Thing } from "./thing";
-
-const textInputBoxProps = {
-  align: "center",
-  width: "medium",
-  direction: "row"
-};
-
-const listBoxProps = {
-  margin: "medium",
-  align: "center",
-  width: "medium",
-  border: {
-    color: "brand",
-    size: "small",
-    side: "top"
-  }
-};
-
-const errorTextProps = {
-  color: "status-error",
-  size: "small",
-  margin: { bottom: "none" }
-};
+import { Thing } from './thing';
 
 export function InputMode(props) {
   const {
@@ -45,29 +21,26 @@ export function InputMode(props) {
 
   return (
     <>
-      <Paragraph textAlign="center">
-        {"Let's prioritize! Start by adding a handful of things below."}
-      </Paragraph>
-      <Box {...textInputBoxProps}>
-        <TextInput
-          placeholder="Add a thing..."
-          size="medium"
-          value={inputValue}
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-        />
-        <Button label="+Add" onClick={addThing} margin="small" />
-      </Box>
-      {isDuplicate && (
-        <Paragraph {...errorTextProps}>
-          Oops! You can't add the same thing twice.
-        </Paragraph>
-      )}
-      <Box {...listBoxProps}>
-        <Paragraph color="dark-5">
+      <p class="py-5">Let's prioritize! Start by adding a handful of things below.</p>
+      <div class="container py-5">
+        <div class="flex justify-center space-x-5">
+          <input
+            class="border p-3"
+            placeholder="Add a thing..."
+            value={inputValue}
+            onChange={onChange}
+            onKeyDown={onKeyDown}
+          />
+          <button class="border-2 rounded-3xl px-7 border-purple-400" 
+          onClick={addThing}>+Add</button>
+        </div>
+      </div>
+      {isDuplicate && <p class="text-red-500">Oops! You can't add the same thing twice.</p>}
+      <p>
           {lessThan3Things &&
             `Add ${3 - thingsArray.length} more things to compare`}
-        </Paragraph>
+      </p>
+      <div class="container py-5 space-y-2">
         {thingsArray.map((thing, index) => {
           return (
             <Thing
@@ -80,15 +53,11 @@ export function InputMode(props) {
             />
           );
         })}
-        {!lessThan3Things && (
-          <Button
-            primary
-            label="Compare"
-            margin="small"
-            onClick={onModeChangeClick}
-          />
-        )}
-      </Box>
+      </div>
+      {!lessThan3Things && (
+        <button class="border rounded-3xl px-6 py-2 border-purple-600 bg-purple-600 text-white" 
+        onClick={onModeChangeClick}>Compare</button>
+      )}
     </>
   );
 }

@@ -1,63 +1,46 @@
 //Libraries
-import React, { useState, useEffect } from "react";
-import { Grommet, Box, Heading } from "grommet";
+import React, { useState, useEffect } from 'react';
+
+import './app.css';
 
 //Custom Components
-import { InputMode } from "./inputMode";
-import { CompareMode } from "./compareMode";
+import { InputMode } from './inputMode';
+import { CompareMode } from './compareMode';
 
-//Theme
-const theme = {
-  global: {
-    font: {
-      family: "Roboto",
-      size: "14px",
-      height: "20px"
-    }
-  }
-};
-
-//Box Container Props
-const boxProps = {
-  pad: "small",
-  a11yTitle: "Main Container",
-  align: "center"
-};
-
-//Root App Component
+//Main App
 export function App() {
-  const thingsFromStorage = localStorage.getItem("thingsArray");
-  const initialThings = thingsFromStorage ? thingsFromStorage.split(",") : [];
+  const thingsFromStorage = localStorage.getItem('thingsArray');
+  const initialThings = thingsFromStorage ? thingsFromStorage.split(',') : [];
 
   const [isCompareMode, setCompareMode] = useState(false);
   const [thingsArray, setThingsArray] = useState(initialThings);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
   const [isDuplicate, setDuplicateError] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem("thingsArray", thingsArray);
+    localStorage.setItem('thingsArray', thingsArray);
   }, [thingsArray]);
 
-  const onChange = event => {
+  const onChange = (event) => {
     setInputValue(event.target.value);
   };
 
-  const onKeyDown = event => {
+  const onKeyDown = (event) => {
     if (event.which === 13) {
       addThing();
     }
   };
 
-  const onModeChangeClick = _event => {
+  const onModeChangeClick = (_event) => {
     setCompareMode(!isCompareMode);
   };
 
   const addThing = () => {
     const trimmedInput = inputValue.trim();
-    if (trimmedInput !== "") {
+    if (trimmedInput !== '') {
       if (!thingsArray.includes(trimmedInput)) {
         setThingsArray([...thingsArray, trimmedInput]);
-        setInputValue("");
+        setInputValue('');
         setDuplicateError(false);
       }
       if (thingsArray.includes(trimmedInput)) {
@@ -73,22 +56,22 @@ export function App() {
     newThingsArray[sourceIndex] = destinationThing;
     newThingsArray[destinationIndex] = sourceThing;
     setThingsArray(newThingsArray);
-  }
+  };
 
   const deleteThing = (_event, index) => {
     const thing = thingsArray[index];
     if (thing) {
       const newThingsArray = [...thingsArray];
       delete newThingsArray[index];
-      const updatedThingsArray = newThingsArray.filter(things => things);
+      const updatedThingsArray = newThingsArray.filter((things) => things);
       setThingsArray(updatedThingsArray);
     }
   };
 
   return (
-    <Grommet theme={theme}>
-      <Box {...boxProps}>
-        <Heading level={1}>{"All The Things"}</Heading>
+    <main>
+      <div class="container mx-auto px-10 text-center">
+        <h1 class="text-5xl font-bold py-10">{'All The Things'}</h1>
         {isCompareMode ? (
           <CompareMode
             onModeChangeClick={onModeChangeClick}
@@ -109,7 +92,7 @@ export function App() {
             isDuplicate={isDuplicate}
           />
         )}
-      </Box>
-    </Grommet>
+      </div>
+    </main>
   );
 }
