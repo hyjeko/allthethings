@@ -89,11 +89,11 @@ export function CompareMode(props) {
 
   return (
     <>
-      <p>{'Let the prioritizing begin!'}</p>
-      <div>
+      <p class="m-8">{'Let the prioritizing begin!'}</p>
+      <div class="m-8">
         <h3>{'Which thing is more important?'}</h3>
       </div>
-      <div>
+      <div class="flex justify-center items-center space-x-8">
         <ThingButton
           isSelected={isSelected}
           onSelect={onSelect}
@@ -105,9 +105,10 @@ export function CompareMode(props) {
           thing={thingsArray[rightCompareIndex]}
         />
       </div>
-      <div>
-        <button onClick={onModeChangeClick}>Oops</button>
-        <button onClick={nextClick} disabled={!selectedThing}>
+      <div class="m-8 space-x-4">
+        <button class="border-2 rounded-3xl px-7 border-purple-400" onClick={onModeChangeClick}>Oops</button>
+        <button class={!selectedThing ? "border-2 rounded-3xl px-7 border-purple-500 bg-purple-500 text-white border-opacity-40 bg-opacity-40" : "border-2 rounded-3xl px-7 border-purple-500 bg-purple-500 text-white"} 
+        onClick={nextClick} disabled={!selectedThing}>
           Next
         </button>
       </div>
