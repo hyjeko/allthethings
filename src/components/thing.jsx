@@ -35,7 +35,9 @@ export function Thing(props) {
       <div>
         <text>{props.text}</text>
       </div>
-      <button class="p-2" onClick={onClick}>x</button>
+      <button class="p-2" onClick={onClick}>
+        x
+      </button>
     </div>
   );
 }

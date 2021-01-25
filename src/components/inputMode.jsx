@@ -21,7 +21,9 @@ export function InputMode(props) {
 
   return (
     <>
-      <p class="py-5">Let's prioritize! Start by adding a handful of things below.</p>
+      <p class="py-5">
+        Let's prioritize! Start by adding a handful of things below.
+      </p>
       <div class="container py-5">
         <div class="flex justify-center space-x-5">
           <input
@@ -31,14 +33,20 @@ export function InputMode(props) {
             onChange={onChange}
             onKeyDown={onKeyDown}
           />
-          <button class="border-2 rounded-3xl px-7 border-purple-400" 
-          onClick={addThing}>+Add</button>
+          <button
+            class="border-2 rounded-3xl px-7 border-purple-400"
+            onClick={addThing}
+          >
+            +Add
+          </button>
         </div>
       </div>
-      {isDuplicate && <p class="text-red-500">Oops! You can't add the same thing twice.</p>}
+      {isDuplicate && (
+        <p class="text-red-500">Oops! You can't add the same thing twice.</p>
+      )}
       <p>
-          {lessThan3Things &&
-            `Add ${3 - thingsArray.length} more things to compare`}
+        {lessThan3Things &&
+          `Add ${3 - thingsArray.length} more things to compare`}
       </p>
       <div class="container py-5 space-y-2">
         {thingsArray.map((thing, index) => {
@@ -55,8 +63,12 @@ export function InputMode(props) {
         })}
       </div>
       {!lessThan3Things && (
-        <button class="border rounded-3xl px-6 py-2 border-purple-600 bg-purple-600 text-white" 
-        onClick={onModeChangeClick}>Compare</button>
+        <button
+          class="border rounded-3xl px-6 py-2 border-purple-600 bg-purple-600 text-white"
+          onClick={onModeChangeClick}
+        >
+          Compare
+        </button>
       )}
     </>
   );

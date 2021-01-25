@@ -106,9 +106,21 @@ export function CompareMode(props) {
         />
       </div>
       <div class="m-8 space-x-4">
-        <button class="border-2 rounded-3xl px-7 border-purple-400" onClick={onModeChangeClick}>Oops</button>
-        <button class={!selectedThing ? "border-2 rounded-3xl px-7 border-purple-500 bg-purple-500 text-white border-opacity-40 bg-opacity-40" : "border-2 rounded-3xl px-7 border-purple-500 bg-purple-500 text-white"} 
-        onClick={nextClick} disabled={!selectedThing}>
+        <button
+          class="border-2 rounded-3xl px-7 border-purple-400"
+          onClick={onModeChangeClick}
+        >
+          Oops
+        </button>
+        <button
+          class={
+            !selectedThing
+              ? 'border-2 rounded-3xl px-7 border-purple-500 bg-purple-500 text-white border-opacity-40 bg-opacity-40'
+              : 'border-2 rounded-3xl px-7 border-purple-500 bg-purple-500 text-white'
+          }
+          onClick={nextClick}
+          disabled={!selectedThing}
+        >
           Next
         </button>
       </div>
